@@ -22,7 +22,7 @@ void _View::drawChessBoard() {
 		cout << endl;
 	}
 }
-void _View::insertXO(int x,int y){
+void _View::insertXO(int &x,int &y){
 //switch XO before play
 	if (0<=x && x < 10 && 0<=y && y<10 && this->chessBoard[x][y]=='-') {
 		this->chessBoard[x][y] = this->playXO;

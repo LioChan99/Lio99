@@ -4,7 +4,7 @@ void Control::addPlayer(){
     model.addPlayer();
 
 }
-int Control::CheckWin(int x, int y){
+int Control::CheckWin(int &x, int &y){
     int i, j, dem1, dem2, dem3, dem4;
 	dem1 = dem2 = dem3 = dem4 = 0;
 

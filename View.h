@@ -10,7 +10,7 @@ class _View {
 public:
     _View();
 	void drawChessBoard();
-    void insertXO(int x,int y);
+    void insertXO(int &x,int &y);
 	void resetBoard();
 };
 #endif
