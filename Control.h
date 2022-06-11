@@ -11,7 +11,7 @@ class Control{
 
     public:
         void addPlayer();
-        int CheckWin(int x,int y);
+        int CheckWin(int &x,int &y);
         void PlayGame();
         char getCurrentXY(int &x,int &y);
 
