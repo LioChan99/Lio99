@@ -1,8 +1,12 @@
 #include"Control.h"
+#include"Model.h"
 
 void Control::addPlayer(unique_ptr<Player> player){
 
      model.addPlayer(std::move(player));
+}
+_Model Control::getModel(){
+	return this->model;
 }
 int Control::CheckWin(int &x, int &y){
     int i, j, dem1, dem2, dem3, dem4;
@@ -95,15 +99,48 @@ void Control:: PlayGame(unique_ptr<Player>player1, unique_ptr<Player>player2){
 			else{
 				cout<<player2->getName() <<" WIN!"<<endl;
 				player2->setWin(player1->getWin()+1);
-				player1->setLoss(player2->getLoss()+1)
-			}
-
-			
+				player1->setLoss(player2->getLoss()+1);
+			}		
 			break;
 		}
 	}
-//  view.drawChessBoard();
-//  view.insertXO(int x,int y);
-//  CheckWin(int x,int y);
 }
 
+int main(){
+	int select;
+	Control control;
+	unique_ptr<Player>player1(new Player);
+	unique_ptr<Player>player2(new Player);
+	do{
+		cout<<"1. New Game"<<endl;
+		cout<<"2. Show Players'Information: ";
+		cout<<"3. Exit "<<endl;
+        cin>>select;
+		switch(select){
+			case 1:
+			  // Add player 1
+			  cout<<"Add player1: "<<endl;
+			  player1->insertInfor();
+			  if(control.getModel().checkExistPlayer(player1->getName())==NULL){
+			  	control.addPlayer(std::move(player1));
+			  }
+			  else player1= control.getModel().checkExistPlayer(player1->getName());
+              // Add player 2
+			  cout<<"Add player2: "<<endl;
+			  player2->insertInfor();
+			  if(control.getModel().checkExistPlayer(player2->getName())==NULL){
+			  	control.addPlayer(std::move(player2));
+			  }
+			  else player2= control.getModel().checkExistPlayer(player1->getName());
+			  control.PlayGame(std::move(player1),std::move(player2));
+			  break;
+			case 2:
+			  control.getModel().showPlayersInfor();
+			  break;
+			case 3:
+			  return 1;
+
+	    }
+    }
+     while(select==1|| select==2||select==3);
+}

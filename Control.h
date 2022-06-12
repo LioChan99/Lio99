@@ -12,8 +12,9 @@ class Control{
     public:
         void addPlayer(unique_ptr<Player> player);
         int CheckWin(int &x,int &y);
-        void PlayGame();
+        void PlayGame(unique_ptr<Player>player1, unique_ptr<Player>player2);
         char getCurrentXY(int &x,int &y);
+        _Model getModel();
 
 };
 #endif

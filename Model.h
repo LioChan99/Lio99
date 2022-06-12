@@ -9,8 +9,9 @@ class _Model{
        vector<unique_ptr<Player>>players;
        friend class Control;
     public:
-       void addPlayer();
+       void addPlayer(unique_ptr<Player> player);
        void getPlayerByName(string name); 
-
+       unique_ptr<Player> checkExistPlayer(string name);
+       void showPlayersInfor();
 };
 #endif
