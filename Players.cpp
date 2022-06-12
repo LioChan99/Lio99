@@ -2,7 +2,8 @@
 void Player:: insertInfor(){
     cout<<"Enter name:";
     //cin.ignore();
-    getline(cin,name);
+    //getline(cin,name);
+    cin>>name;
     cout<<"Enter age: ";
     cin>>age;
     cout<<" choose X or O :";
