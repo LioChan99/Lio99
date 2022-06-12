@@ -10,7 +10,7 @@ class Control{
         _View view;
 
     public:
-        void addPlayer();
+        void addPlayer(unique_ptr<Player> player);
         int CheckWin(int &x,int &y);
         void PlayGame();
         char getCurrentXY(int &x,int &y);

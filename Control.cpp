@@ -1,8 +1,8 @@
 #include"Control.h"
 
-void Control::addPlayer(){
-    model.addPlayer();
+void Control::addPlayer(unique_ptr<Player> player){
 
+     model.addPlayer(std::move(player));
 }
 int Control::CheckWin(int &x, int &y){
     int i, j, dem1, dem2, dem3, dem4;
@@ -76,7 +76,7 @@ int Control::CheckWin(int &x, int &y){
 char Control::getCurrentXY(int &x,int &y){
 	return view.chessBoard[x][y];
 }
-void Control:: PlayGame(){
+void Control:: PlayGame(unique_ptr<Player>player1, unique_ptr<Player>player2){
 		int x, y;
 	while (1) {	
 		system("cls");
@@ -87,11 +87,18 @@ void Control:: PlayGame(){
 		if (CheckWin(x, y) == 1) {
 			system("cls");
 			view.drawChessBoard();
-			for(int i=0;i<model.players.size();i++){
-				if(model.players[i]->getId()==getCurrentXY(x,y)){
-					cout<< model.players[i]->getName()<<" WIN!"<<endl;
-				}
+			if(player1->getId()==getCurrentXY(x,y)){
+				cout<<player1->getName() <<" WIN!"<<endl;
+				player1->setWin(player1->getWin()+1);
+				player2->setLoss(player2->getLoss()+1);
 			}
+			else{
+				cout<<player2->getName() <<" WIN!"<<endl;
+				player2->setWin(player1->getWin()+1);
+				player1->setLoss(player2->getLoss()+1)
+			}
+
+			
 			break;
 		}
 	}

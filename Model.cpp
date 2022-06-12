@@ -1,7 +1,7 @@
 #include"Model.h"
-void _Model::addPlayer(){
+void _Model::addPlayer( unique_ptr<Player> player){
     unique_ptr<Player> player(new Player);
-    player->insertInfor();
+    //player->insertInfor();
     players.push_back(std::move(player));
 };
 void _Model::getPlayerByName(string name){

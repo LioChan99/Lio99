@@ -8,7 +8,6 @@ class Player{
     private:
         string name;
         char id;
-        int age;
         int win;
         int loss;
         int draw;
