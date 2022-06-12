@@ -1,4 +1,9 @@
 #include"Players.h"
+Player::Player(){
+    this->win=0;
+    this->loss=0;
+    this->draw=0;
+}
 void Player:: insertInfor(){
     cout<<"Enter name:";
     //cin.ignore();
@@ -25,4 +30,16 @@ void Player:: ShowInfo(){
 }
 char Player::getId(){
     return id;
+}
+int Player::getWin(){
+    return win;
+}
+int Player::getLoss(){
+    return loss;
+}
+void Player:: setWin(int win){
+    this->win=win;
+}
+void Player:: setLoss(int loss){
+    this->loss=loss;
 }

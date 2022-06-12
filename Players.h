@@ -14,6 +14,11 @@ class Player{
         int draw;
 
     public:
+       Player();
+       int getWin();
+       int getLoss();
+       void setWin(int);
+       void setLoss(int);
        string getName();
        void insertInfor();
        char getId();
