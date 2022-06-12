@@ -87,12 +87,11 @@ void Control:: PlayGame(){
 		if (CheckWin(x, y) == 1) {
 			system("cls");
 			view.drawChessBoard();
-			cout<<"Win!";
-			/*for(int i=0;i<model.players.size();i++){
+			for(int i=0;i<model.players.size();i++){
 				if(model.players[i]->getId()==getCurrentXY(x,y)){
 					cout<< model.players[i]->getName()<<" WIN!"<<endl;
 				}
-			}*/
+			}
 			break;
 		}
 	}
