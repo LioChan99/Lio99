@@ -90,8 +90,9 @@ void Control:: PlayGame(Player &player1,Player &player2){
 		view.insertXO(x,y);	
 		if (CheckWin(x, y) == 1) {
 			// system("cls");
-			// view.drawChessBoard();
-			if(player1.getId()==getCurrentXY(x,y)){
+			//  view.drawChessBoard();
+			 cout<<"Win";
+			/*if(player1.getId()==getCurrentXY(x,y)){
 				cout<<player1.getName() <<" WIN!"<<endl;
 				player1.setWin(player1.getWin()+1);
 				player2.setLoss(player2.getLoss()+1);
@@ -100,7 +101,7 @@ void Control:: PlayGame(Player &player1,Player &player2){
 				cout<<player2.getName() <<" WIN!"<<endl;
 				player2.setWin(player1.getWin()+1);
 				player1.setLoss(player2.getLoss()+1);
-			}		
+			}		*/
 			break;
 		}
 	}
@@ -122,10 +123,12 @@ int main(){
 			  cout<<"Add player1: "<<endl;
 			  player1.insertInfor();
 			  player1= control.getModel().checkExistPlayer(player1);
+			  control.addPlayer(player1);
               // Add player 2
 			  cout<<"Add player2: "<<endl;
 			  player2.insertInfor();
 			  player2= control.getModel().checkExistPlayer(player2);
+			  control.addPlayer(player2);
 			  control.PlayGame(player1,player2);
 			  break;
 			case 2:

@@ -15,9 +15,8 @@ Player _Model::checkExistPlayer(Player player){
         if(players[i].getName()==player.getName()){
             return (players[i]);
         }
-        else return player;
     }
-    
+    return player;  
 }
  void _Model::showPlayersInfor(){
          for(int i=0;i<players.size();i++){
