@@ -105,6 +105,7 @@ void Control:: PlayGame(Player &player1,Player &player2){
 			break;
 		}
 	}
+	view.resetBoard();
 }
 
 int main(){
@@ -122,14 +123,15 @@ int main(){
 			  // Add player 1
 			  cout<<"Add player1: "<<endl;
 			  player1.insertInfor();
-			  player1= control.getModel().checkExistPlayer(player1);
+			  if(control.getModel().checkExistPlayer(player1));
 			  control.addPlayer(player1);
               // Add player 2
 			  cout<<"Add player2: "<<endl;
 			  player2.insertInfor();
-			  player2= control.getModel().checkExistPlayer(player2);
+			  if(control.getModel().checkExistPlayer(player2));
 			  control.addPlayer(player2);
 			  control.PlayGame(player1,player2);
+
 			  break;
 			case 2:
 			  control.getModel().showPlayersInfor();

@@ -11,7 +11,7 @@ class _Model{
     public:
        void addPlayer(Player player);
        void getPlayerByName(string name); 
-       Player checkExistPlayer(Player player);
+       int checkExistPlayer(Player player);
        void showPlayersInfor();
 };
 #endif

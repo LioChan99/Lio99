@@ -27,10 +27,10 @@ void Player:: ShowInfo(){
 char Player::getId(){
     return id;
 }
-int& Player::getWin(){
+int Player::getWin(){
     return win;
 }
-int& Player::getLoss(){
+int Player::getLoss(){
     return loss;
 }
 void Player:: setWin(int win){

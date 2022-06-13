@@ -10,13 +10,14 @@ void _Model::getPlayerByName(string name){
         }
     }
 }
-Player _Model::checkExistPlayer(Player player){
+int _Model::checkExistPlayer(Player player){
     for(int i=0;i<players.size();i++){
         if(players[i].getName()==player.getName()){
-            return (players[i]);
+            player= (players[i]);
+            return 0;
         }
     }
-    return player;  
+    return 1;
 }
  void _Model::showPlayersInfor(){
          for(int i=0;i<players.size();i++){
