@@ -1,9 +1,9 @@
 #include"Control.h"
 #include"Model.h"
 
-void Control::addPlayer(unique_ptr<Player> player){
+void Control::addPlayer(Player &player){
 
-     model.addPlayer(std::move(player));
+     model.addPlayer(player);
 }
 _Model Control::getModel(){
 	return this->model;
@@ -80,7 +80,7 @@ int Control::CheckWin(int &x, int &y){
 char Control::getCurrentXY(int &x,int &y){
 	return view.chessBoard[x][y];
 }
-void Control:: PlayGame(unique_ptr<Player>player1, unique_ptr<Player>player2){
+void Control:: PlayGame(Player &player1,Player &player2){
 		int x, y;
 	while (1) {	
 		system("cls");
@@ -89,17 +89,17 @@ void Control:: PlayGame(unique_ptr<Player>player1, unique_ptr<Player>player2){
 		cin >> x >> y;
 		view.insertXO(x,y);	
 		if (CheckWin(x, y) == 1) {
-			system("cls");
-			view.drawChessBoard();
-			if(player1->getId()==getCurrentXY(x,y)){
-				cout<<player1->getName() <<" WIN!"<<endl;
-				player1->setWin(player1->getWin()+1);
-				player2->setLoss(player2->getLoss()+1);
+			// system("cls");
+			// view.drawChessBoard();
+			if(player1.getId()==getCurrentXY(x,y)){
+				cout<<player1.getName() <<" WIN!"<<endl;
+				player1.setWin(player1.getWin()+1);
+				player2.setLoss(player2.getLoss()+1);
 			}
 			else{
-				cout<<player2->getName() <<" WIN!"<<endl;
-				player2->setWin(player1->getWin()+1);
-				player1->setLoss(player2->getLoss()+1);
+				cout<<player2.getName() <<" WIN!"<<endl;
+				player2.setWin(player1.getWin()+1);
+				player1.setLoss(player2.getLoss()+1);
 			}		
 			break;
 		}
@@ -109,36 +109,31 @@ void Control:: PlayGame(unique_ptr<Player>player1, unique_ptr<Player>player2){
 int main(){
 	int select;
 	Control control;
-	unique_ptr<Player>player1(new Player);
-	unique_ptr<Player>player2(new Player);
+	Player player1;
+	Player player2;
 	do{
 		cout<<"1. New Game"<<endl;
-		cout<<"2. Show Players'Information: ";
+		cout<<"2. Show Players'Information: "<<endl;
 		cout<<"3. Exit "<<endl;
         cin>>select;
 		switch(select){
 			case 1:
 			  // Add player 1
 			  cout<<"Add player1: "<<endl;
-			  player1->insertInfor();
-			  if(control.getModel().checkExistPlayer(player1->getName())==NULL){
-			  	control.addPlayer(std::move(player1));
-			  }
-			  else player1= control.getModel().checkExistPlayer(player1->getName());
+			  player1.insertInfor();
+			  player1= control.getModel().checkExistPlayer(player1);
               // Add player 2
 			  cout<<"Add player2: "<<endl;
-			  player2->insertInfor();
-			  if(control.getModel().checkExistPlayer(player2->getName())==NULL){
-			  	control.addPlayer(std::move(player2));
-			  }
-			  else player2= control.getModel().checkExistPlayer(player1->getName());
-			  control.PlayGame(std::move(player1),std::move(player2));
+			  player2.insertInfor();
+			  player2= control.getModel().checkExistPlayer(player2);
+			  control.PlayGame(player1,player2);
 			  break;
 			case 2:
 			  control.getModel().showPlayersInfor();
 			  break;
 			case 3:
 			  return 1;
+			  break;
 
 	    }
     }

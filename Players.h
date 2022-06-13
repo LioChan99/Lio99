@@ -1,5 +1,5 @@
-#ifndef Players.h
-#define Players.h
+#ifndef Players_h
+#define Players_h
 #include<string>
 #include <iostream>
 using namespace std;

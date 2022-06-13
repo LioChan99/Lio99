@@ -1,27 +1,26 @@
 #include"Model.h"
-void _Model::addPlayer( unique_ptr<Player> player){
-    player =unique_ptr<Player>(new Player);
+void _Model::addPlayer(Player player){
     //player->insertInfor();
-    players.push_back(std::move(player));
+    players.push_back(player);
 };
 void _Model::getPlayerByName(string name){
     for(int i=0;i<players.size();i++){
-        if(players[i]->getName()==name){
-            players[i]->ShowInfo();
+        if(players[i].getName()==name){
+            players[i].ShowInfo();
         }
     }
 }
-unique_ptr<Player> _Model::checkExistPlayer(string name){
-    for(auto i=players.begin();i!=players.end();i++){
-        if((*i)->getName()==name){
-            return (std::move(*i));
+Player _Model::checkExistPlayer(Player player){
+    for(int i=0;i<players.size();i++){
+        if(players[i].getName()==player.getName()){
+            return (players[i]);
         }
-        else return NULL;
+        else return player;
     }
     
 }
  void _Model::showPlayersInfor(){
-         for(auto i=players.begin();i!=players.end();i++){
-            (*i)->ShowInfo();
+         for(int i=0;i<players.size();i++){
+            players[i].ShowInfo();
          }
        }

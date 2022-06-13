@@ -14,7 +14,7 @@ void _View::drawChessBoard() {
 	// 		this->chessBoard[i][j]= '-';
 	// 	}
 	// }
-	cout<<"            CARO GAME "<<endl;
+	cout<<"                CARO GAME "<<endl;
 	for (int i = 0; i < 10; i++) {
 		cout << "| ";
 		for (int j = 0; j < 10; j++) {

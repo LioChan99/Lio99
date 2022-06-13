@@ -6,12 +6,12 @@
 #include<memory>
 class _Model{
     private:
-       vector<unique_ptr<Player>>players;
+       vector<Player>players;
        friend class Control;
     public:
-       void addPlayer(unique_ptr<Player> player);
+       void addPlayer(Player player);
        void getPlayerByName(string name); 
-       unique_ptr<Player> checkExistPlayer(string name);
+       Player checkExistPlayer(Player player);
        void showPlayersInfor();
 };
 #endif
