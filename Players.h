@@ -14,8 +14,8 @@ class Player{
 
     public:
        Player();
-       int getWin();
-       int getLoss();
+       int& getWin();
+       int& getLoss();
        void setWin(int);
        void setLoss(int);
        string getName();

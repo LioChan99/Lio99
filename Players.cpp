@@ -22,15 +22,15 @@ string Player::getName(){
 }
 
 void Player:: ShowInfo(){
-    cout<<name<<" "<<"Win:"<<win<<" Loss:"<<loss<<" Draw:"<<draw<<endl;
+    cout<<name<<" "<<"Win:"<<this->win<<" Loss:"<<this->loss<<" Draw:"<<this->draw<<endl;
 }
 char Player::getId(){
     return id;
 }
-int Player::getWin(){
+int& Player::getWin(){
     return win;
 }
-int Player::getLoss(){
+int& Player::getLoss(){
     return loss;
 }
 void Player:: setWin(int win){
