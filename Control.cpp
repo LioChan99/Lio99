@@ -1,7 +1,7 @@
 #include"Control.h"
 #include"Model.h"
 
-void Control::addPlayer(Player &player){
+void Control::addPlayer(Player* player){
 
      model.addPlayer(player);
 }
@@ -80,7 +80,7 @@ int Control::CheckWin(int &x, int &y){
 char Control::getCurrentXY(int &x,int &y){
 	return view.chessBoard[x][y];
 }
-void Control:: PlayGame(Player &player1,Player &player2){
+void Control:: PlayGame(Player* player1,Player* player2){
 		int x, y;
 	while (1) {	
 		system("cls");
@@ -92,15 +92,15 @@ void Control:: PlayGame(Player &player1,Player &player2){
 			system("cls");
 			view.drawChessBoard();
 			 //cout<<"Win"<<endl;
-			if(player1.getId()==getCurrentXY(x,y)){
-				cout<<player1.getName() <<" WIN!"<<endl;
-				player1.setWin(player1.getWin()+1);
-				player2.setLoss(player2.getLoss()+1);
+			if(player1->getId()==getCurrentXY(x,y)){
+				cout<<player1->getName() <<" WIN!"<<endl;
+				player1->setWin(player1->getWin()+1);
+				player2->setLoss(player2->getLoss()+1);
 			}
 			else{
-				cout<<player2.getName() <<" WIN!"<<endl;
-				player2.setWin(player1.getWin()+1);
-				player1.setLoss(player2.getLoss()+1);
+				cout<<player2->getName() <<" WIN!"<<endl;
+				player2->setWin(player1->getWin()+1);
+				player1->setLoss(player2->getLoss()+1);
 			}		
 			break;
 		}
@@ -111,8 +111,6 @@ void Control:: PlayGame(Player &player1,Player &player2){
 int main(){
 	int select;
 	Control control;
-	Player player1;
-	Player player2;
 	do{
 		cout<<"1. New Game"<<endl;
 		cout<<"2. Show Players'Information: "<<endl;
@@ -120,19 +118,25 @@ int main(){
         cin>>select;
 		switch(select){
 			case 1:
+			{
+			Player* player1=new(Player);
+	        Player* player2=new(Player);
 			  // Add player 1
 			  cout<<"Add player1: "<<endl;
-			  player1.insertInfor();
-			  if(control.getModel().checkExistPlayer(player1));
-			  control.addPlayer(player1);
+			  player1->insertInfor();
+			  if(control.getModel().checkExistPlayer(player1->getName())==NULL){
+			  control.addPlayer(player1);}
+			  else player1= control.getModel().checkExistPlayer(player1->getName());
               // Add player 2
 			  cout<<"Add player2: "<<endl;
-			  player2.insertInfor();
-			  if(control.getModel().checkExistPlayer(player2));
-			  control.addPlayer(player2);
+			  player2->insertInfor();
+			  if(control.getModel().checkExistPlayer(player2->getName())==NULL){
+			  control.addPlayer(player2);}
+			  else player2= control.getModel().checkExistPlayer(player2->getName());
 			  control.PlayGame(player1,player2);
 
 			  break;
+			}
 			case 2:
 			  control.getModel().showPlayersInfor();
 			  break;

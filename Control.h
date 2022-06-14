@@ -10,9 +10,9 @@ class Control{
         _View view;
 
     public:
-        void addPlayer(Player &player);
+        void addPlayer(Player* player);
         int CheckWin(int &x,int &y);
-        void PlayGame(Player &player1,Player &player2);
+        void PlayGame(Player* player1,Player* player2);
         char getCurrentXY(int &x,int &y);
         _Model getModel();
 
