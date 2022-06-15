@@ -22,7 +22,7 @@ string Player::getName(){
 }
 
 void Player:: ShowInfo(){
-    cout<<name<<" "<<"Win:"<<this->win<<" Loss:"<<this->loss<<" Draw:"<<this->draw<<endl;
+    cout<<name<<" "<<"Win:"<<this->win<<" Loss:"<<this->loss<<" Draw:"<<this->draw<<" Winrate: "<<this->calculateWinrate()<<endl;
 }
 char Player::getId(){
     return id;
@@ -38,4 +38,7 @@ void Player:: setWin(int win){
 }
 void Player:: setLoss(int loss){
     this->loss=loss;
+}
+float Player::calculateWinrate(){
+    return (this->win/(this->loss+ this->win)*100);
 }

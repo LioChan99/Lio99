@@ -5,6 +5,9 @@ void Control::addPlayer(shared_ptr<Player> player){
 
      model.addPlayer(player);
 }
+void Control::findSimilerPlayer(string name){
+	model.findSimilerPlayer(name);
+}
 Model Control::getModel(){
 	return this->model;
 }
@@ -105,47 +108,7 @@ void Control:: PlayGame(shared_ptr<Player> player1,shared_ptr<Player> player2){
 			break;
 		}
 	}
+	model.imPortFile();
 	view.resetBoard();
 }
 
-int main(){
-	int select;
-	Control control;
-	do{
-		cout<<"1. New Game"<<endl;
-		cout<<"2. Show Players'Information: "<<endl;
-		cout<<"3. Exit "<<endl;
-        cin>>select;
-		switch(select){
-			case 1:
-			{
-			shared_ptr<Player>player1(new Player);
-	        shared_ptr<Player>player2(new Player);
-			  // Add player 1
-			  cout<<"Add player1: "<<endl;
-			  player1->insertInfor();
-			  if(control.getModel().checkExistPlayer(player1->getName())==NULL){
-			  control.addPlayer(player1);}
-			  else player1= control.getModel().checkExistPlayer(player1->getName());
-              // Add player 2
-			  cout<<"Add player2: "<<endl;
-			  player2->insertInfor();
-			  if(control.getModel().checkExistPlayer(player2->getName())==NULL){
-			  control.addPlayer(player2);}
-			  else player2= control.getModel().checkExistPlayer(player2->getName());
-			  control.PlayGame(player1,player2);
-		
-
-			  break;
-			}
-			case 2:
-			  control.getModel().showPlayersInfor();
-			  break;
-			case 3:
-			  return 1;
-			  break;
-
-	    }
-    }
-     while(select==1|| select==2||select==3);
-}

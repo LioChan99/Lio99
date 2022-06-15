@@ -15,6 +15,7 @@ class Control{
         void PlayGame(shared_ptr<Player> player1,shared_ptr<Player> player2);
         char getCurrentXY(int &x,int &y);
         Model getModel();
+        void findSimilerPlayer(string name);
 
 };
 #endif

@@ -4,15 +4,18 @@
 #include"Players.h"
 #include<vector>
 #include<memory>
+#include<fstream>
 class Model{
     private:
        vector<shared_ptr<Player>>players;
        friend class Control;
     public:
        void addPlayer(shared_ptr<Player> player);
-       void getPlayerByName(string name); 
+       shared_ptr<Player> getPlayerByName(string name); 
        shared_ptr<Player> checkExistPlayer(string name);
        void showPlayersInfor();
-      // ~Model();
+       void imPortFile();
+       void findSimilerPlayer(string name);
+       
 };
 #endif

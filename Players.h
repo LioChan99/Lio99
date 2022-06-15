@@ -21,7 +21,9 @@ class Player{
        string getName();
        void insertInfor();
        char getId();
-        void ShowInfo();
+       void ShowInfo();
+       float calculateWinrate();
+
 
 };
 
