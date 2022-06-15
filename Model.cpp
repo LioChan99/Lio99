@@ -1,16 +1,16 @@
 #include"Model.h"
-void _Model::addPlayer(Player* player){
+void Model::addPlayer(shared_ptr<Player> player){
     //player->insertInfor();
     players.push_back(player);
 };
-void _Model::getPlayerByName(string name){
+void Model::getPlayerByName(string name){
     for(int i=0;i<players.size();i++){
         if(players[i]->getName()==name){
             players[i]->ShowInfo();
         }
     }
 }
-Player* _Model::checkExistPlayer(string name){
+shared_ptr<Player> Model::checkExistPlayer(string name){
     for(int i=0;i<players.size();i++){
         if(players[i]->getName()==name){
             return (players[i]);
@@ -19,8 +19,13 @@ Player* _Model::checkExistPlayer(string name){
     }
     return NULL;
 }
- void _Model::showPlayersInfor(){
+ void Model::showPlayersInfor(){
          for(int i=0;i<players.size();i++){
             players[i]->ShowInfo();
          }
        }
+ /*Model::~Model(){
+     for(int i=0;i<players.size();i++){
+        delete players[i];
+     }
+ }*/

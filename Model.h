@@ -1,17 +1,18 @@
 #ifndef MODEL_H
 #define MODEL_H
-#include<string>
+#include<string.h>
 #include"Players.h"
 #include<vector>
 #include<memory>
-class _Model{
+class Model{
     private:
-       vector<Player*>players;
+       vector<shared_ptr<Player>>players;
        friend class Control;
     public:
-       void addPlayer(Player* player);
+       void addPlayer(shared_ptr<Player> player);
        void getPlayerByName(string name); 
-       Player* checkExistPlayer(string name);
+       shared_ptr<Player> checkExistPlayer(string name);
        void showPlayersInfor();
+      // ~Model();
 };
 #endif

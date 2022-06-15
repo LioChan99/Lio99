@@ -1,11 +1,11 @@
 #include"Control.h"
 #include"Model.h"
 
-void Control::addPlayer(Player* player){
+void Control::addPlayer(shared_ptr<Player> player){
 
      model.addPlayer(player);
 }
-_Model Control::getModel(){
+Model Control::getModel(){
 	return this->model;
 }
 int Control::CheckWin(int &x, int &y){
@@ -80,7 +80,7 @@ int Control::CheckWin(int &x, int &y){
 char Control::getCurrentXY(int &x,int &y){
 	return view.chessBoard[x][y];
 }
-void Control:: PlayGame(Player* player1,Player* player2){
+void Control:: PlayGame(shared_ptr<Player> player1,shared_ptr<Player> player2){
 		int x, y;
 	while (1) {	
 		system("cls");
@@ -119,8 +119,8 @@ int main(){
 		switch(select){
 			case 1:
 			{
-			Player* player1=new(Player);
-	        Player* player2=new(Player);
+			shared_ptr<Player>player1(new Player);
+	        shared_ptr<Player>player2(new Player);
 			  // Add player 1
 			  cout<<"Add player1: "<<endl;
 			  player1->insertInfor();
@@ -134,6 +134,7 @@ int main(){
 			  control.addPlayer(player2);}
 			  else player2= control.getModel().checkExistPlayer(player2->getName());
 			  control.PlayGame(player1,player2);
+		
 
 			  break;
 			}

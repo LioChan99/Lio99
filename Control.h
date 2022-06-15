@@ -6,15 +6,15 @@ using namespace std;
 
 class Control{
     private:
-        _Model model;
-        _View view;
+        Model model;
+        View view;
 
     public:
-        void addPlayer(Player* player);
+        void addPlayer(shared_ptr<Player> player);
         int CheckWin(int &x,int &y);
-        void PlayGame(Player* player1,Player* player2);
+        void PlayGame(shared_ptr<Player> player1,shared_ptr<Player> player2);
         char getCurrentXY(int &x,int &y);
-        _Model getModel();
+        Model getModel();
 
 };
 #endif

@@ -1,5 +1,5 @@
 #include"View.h"
-_View::_View(){
+View::View(){
 	this->playXO = 'X';
 	 for (int i = 0; i < 10; i++) {
 	 	for (int j = 0; j < 10; j++) {
@@ -7,7 +7,7 @@ _View::_View(){
 	 	}
 	 }
 }
-void _View::drawChessBoard() {
+void View::drawChessBoard() {
 	// this->playXO = 'X';
 	// for (int i = 0; i < 10; i++) {
 	// 	for (int j = 0; j < 10; j++) {
@@ -23,7 +23,7 @@ void _View::drawChessBoard() {
 		cout << endl;
 	}
 }
-void _View::insertXO(int &x,int &y){
+void View::insertXO(int &x,int &y){
 //switch XO before play
 	if (0<=x && x < 10 && 0<=y && y<10 && this->chessBoard[x][y]=='-') {
 		this->chessBoard[x][y] = this->playXO;
@@ -38,7 +38,7 @@ void _View::insertXO(int &x,int &y){
 		cout << "Invalid position!"<<endl;
 	}
 }
-void _View::resetBoard(){
+void View::resetBoard(){
     this->playXO = 'X';
 	 for (int i = 0; i < 10; i++) {
 	 	for (int j = 0; j < 10; j++) {
