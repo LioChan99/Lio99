@@ -7,8 +7,8 @@ Player::Player(){
 void Player:: insertInfor(){
     cout<<"Enter name:";
     cin>>name;
-    cout<<" choose X or O :";
-    cin>>id;
+    // cout<<" choose X or O :";
+    // cin>>id;
     // do{
     //    if(id=='X') {cout<<" You will play with X"<<endl;}
     //    break;
@@ -41,4 +41,10 @@ void Player:: setLoss(int loss){
 }
 float Player::calculateWinrate(){
     return (this->win/(this->loss+ this->win)*100);
+}
+void Player::setX(){
+    this->id='X';
+}
+void Player::setO(){
+    this->id='O';
 }

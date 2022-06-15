@@ -23,6 +23,8 @@ class Player{
        char getId();
        void ShowInfo();
        float calculateWinrate();
+       void setX();
+       void setO();
 
 
 };

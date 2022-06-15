@@ -3,16 +3,20 @@ int main(){
 	int select;
 	Control control;
 	do{
-		cout<<"1. New Game"<<endl;
-		cout<<"2. Show Players'Information: "<<endl;
-        cout<<"3. Find Similer Player by name: "<<endl;
-		cout<<"4. Exit "<<endl;
+		cout<<"======== CARO GAME ========="<<endl;
+		cout<<" 1. New Game"<<endl;
+		cout<<" 2. Show Players'Information: "<<endl;
+        cout<<" 3. Find Similer Player by name: "<<endl;
+		cout<<" 4. Exit "<<endl;
         cin>>select;
 		switch(select){
 			case 1:
 			{
+				system("cls");
 			shared_ptr<Player>player1(new Player);
 	        shared_ptr<Player>player2(new Player);
+			player1->setX();
+			player2->setO();
 			  // Add player 1
 			  cout<<"Add player1: "<<endl;
 			  player1->insertInfor();
@@ -31,9 +35,11 @@ int main(){
 			  break;
 			}
 			case 2:
+			  system("cls");
 			  control.getModel().showPlayersInfor();
 			  break;
             case 3:{
+				system("cls");
               cout<<"Enter name: "<<endl;
               string name;
               cin>>name;

@@ -87,6 +87,8 @@ void Control:: PlayGame(shared_ptr<Player> player1,shared_ptr<Player> player2){
 		int x, y;
 	while (1) {	
 		system("cls");
+		cout<<"                CARO GAME "<<endl;
+		cout<<"    "<<player1->getName()<<"<X>"<<"                     "<<player2->getName()<<"<O>"<<endl;
 		view.drawChessBoard();
 		cout << "Insert x,y: ";
 		cin >> x >> y;
@@ -94,6 +96,8 @@ void Control:: PlayGame(shared_ptr<Player> player1,shared_ptr<Player> player2){
 		if (CheckWin(x, y) == 1) {
 			system("cls");
 			view.drawChessBoard();
+			cout<<"                CARO GAME "<<endl;
+		cout<<"    "<<player1->getName()<<"<X>"<<"                      "<<player2->getName()<<"<O>"<<endl;
 			 //cout<<"Win"<<endl;
 			if(player1->getId()==getCurrentXY(x,y)){
 				cout<<player1->getName() <<" WIN!"<<endl;
