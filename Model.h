@@ -10,12 +10,12 @@ class Model{
        vector<shared_ptr<Player>>players;
        friend class Control;
     public:
-       void addPlayer(shared_ptr<Player> player);
-       shared_ptr<Player> getPlayerByName(string name); 
+       void addPlayer(shared_ptr<Player> &player);
+       shared_ptr<Player> getPlayerByName(string &name); 
        shared_ptr<Player> checkExistPlayer(string name);
        void showPlayersInfor();
        void imPortFile();
-       void findSimilerPlayer(string name);
+       void findSimilerPlayer(string &name);
        
 };
 #endif

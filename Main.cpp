@@ -4,9 +4,9 @@ int main(){
 	Control control;
 	do{
 		cout<<"======== CARO GAME ========="<<endl;
-		cout<<" 1. New Game"<<endl;
-		cout<<" 2. Show Players'Information: "<<endl;
-        cout<<" 3. Find Similer Player by name: "<<endl;
+		cout<<" 1. New game"<<endl;
+		cout<<" 2. Show players'information"<<endl;
+        cout<<" 3. Find player with same rank"<<endl;
 		cout<<" 4. Exit "<<endl;
         cin>>select;
 		switch(select){
@@ -43,6 +43,7 @@ int main(){
               cout<<"Enter name: "<<endl;
               string name;
               cin>>name;
+			  cout<<"The player has the same rank with you is: "<<endl;
               control.findSimilerPlayer(name);
               break;
             }

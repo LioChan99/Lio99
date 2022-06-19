@@ -1,11 +1,11 @@
 #include"Control.h"
 #include"Model.h"
 
-void Control::addPlayer(shared_ptr<Player> player){
+void Control::addPlayer(shared_ptr<Player> &player){
 
      model.addPlayer(player);
 }
-void Control::findSimilerPlayer(string name){
+void Control::findSimilerPlayer(string &name){
 	model.findSimilerPlayer(name);
 }
 Model Control::getModel(){
@@ -83,23 +83,73 @@ int Control::CheckWin(int &x, int &y){
 char Control::getCurrentXY(int &x,int &y){
 	return view.chessBoard[x][y];
 }
-void Control:: PlayGame(shared_ptr<Player> player1,shared_ptr<Player> player2){
-		int x, y;
-	while (1) {	
+void Control:: PlayGame(shared_ptr<Player> &player1,shared_ptr<Player> &player2){
+		int x_mouse, y_mouse;
 		system("cls");
-		cout<<"                CARO GAME "<<endl;
-		cout<<"    "<<player1->getName()<<"<X>"<<"                     "<<player2->getName()<<"<O>"<<endl;
+		cout<<"                       <XXXXXXXXXX> CARO GAME <XXXXXXXXXX> "<<endl;
+		cout<<"                      -------------------------------------"<<endl;
+		cout<<"    "<<player1->getName()<<"<X>"<<"                                                              "<<player2->getName()<<"<O>"<<endl;
+	
 		view.drawChessBoard();
-		cout << "Insert x,y: ";
-		cin >> x >> y;
-		view.insertXO(x,y);	
-		if (CheckWin(x, y) == 1) {
+		// set up screen ; 
+    INPUT_RECORD ir[128];
+    HANDLE       hStdInput  = NULL;
+    HANDLE       hStdOutput = NULL;
+    HANDLE       hEvent     = NULL;
+    DWORD        nRead;                                                
+    COORD        xy;
+
+
+    hStdInput=GetStdHandle(STD_INPUT_HANDLE);
+    hStdOutput=GetStdHandle(STD_OUTPUT_HANDLE);
+   // view.cls(hStdOutput);
+    SetConsoleMode(hStdInput,ENABLE_ECHO_INPUT|ENABLE_LINE_INPUT|ENABLE_MOUSE_INPUT|ENABLE_EXTENDED_FLAGS);
+    FlushConsoleInputBuffer(hStdInput);
+    hEvent=CreateEvent(NULL,FALSE,FALSE,NULL);                   
+    HANDLE handles[2] = {hEvent, hStdInput};
+
+    while(WaitForMultipleObjects(2,handles,FALSE,INFINITE))     
+    {                                                    
+        ReadConsoleInput(hStdInput,ir,128,&nRead); 
+
+
+        for(size_t i=0;i<nRead;i++)                             
+        {                             
+             
+            if(ir[i].EventType == MOUSE_EVENT) 
+            {                                 
+                    xy.X=0, xy.Y=3;                                     
+                    SetConsoleCursorPosition(hStdOutput,xy);
+                    if((GetKeyState(VK_LBUTTON) & 0x8000) != 0)
+                    {   
+                        x_mouse = ir[i].Event.MouseEvent.dwMousePosition.X / 4 ; 
+                        y_mouse = ir[i].Event.MouseEvent.dwMousePosition.Y - 3 ;
+						//view.insertXO(y_mouse,x_mouse);
+					    view.insertXoOnly(y_mouse,x_mouse);
+						//view.drawChessBoard();
+						// view.insertXoOnly(ir[i].Event.MouseEvent.dwMousePosition.X,ir[i].Event.MouseEvent.dwMousePosition.Y);
+						//view.drawChessBoard();
+							// while(1){
+			//  if((GetKeyState(VK_LBUTTON) & 0x8000) != 0) 
+            // {  
+            //     POINT xypos;
+            //     GetCursorPos(&xypos); 
+            //     x = (xypos.x-5)/36;
+            //     y = (xypos.y-77)/19;
+             
+            //     view.insertXO(y,x);
+
+            //    break;
+            // }	
+			// }
+
+			if (CheckWin(y_mouse,x_mouse) == 1) {
 			system("cls");
 			view.drawChessBoard();
-			cout<<"                CARO GAME "<<endl;
-		cout<<"    "<<player1->getName()<<"<X>"<<"                      "<<player2->getName()<<"<O>"<<endl;
+		// 	cout<<"                CARO GAME "<<endl;
+		// cout<<"    "<<player1->getName()<<"<X>"<<"                      "<<player2->getName()<<"<O>"<<endl;
 			 //cout<<"Win"<<endl;
-			if(player1->getId()==getCurrentXY(x,y)){
+			if(player1->getId()==getCurrentXY(y_mouse,x_mouse)){
 				cout<<player1->getName() <<" WIN!"<<endl;
 				player1->setWin(player1->getWin()+1);
 				player2->setLoss(player2->getLoss()+1);
@@ -108,11 +158,17 @@ void Control:: PlayGame(shared_ptr<Player> player1,shared_ptr<Player> player2){
 				cout<<player2->getName() <<" WIN!"<<endl;
 				player2->setWin(player1->getWin()+1);
 				player1->setLoss(player2->getLoss()+1);
-			}		
-			break;
+			}	
+			model.imPortFile();
+	        view.resetBoard();	
+			return;
 		}
 	}
-	model.imPortFile();
-	view.resetBoard();
+
 }
+		}
+	}
+	
+	}
+
 

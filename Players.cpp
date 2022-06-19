@@ -7,22 +7,14 @@ Player::Player(){
 void Player:: insertInfor(){
     cout<<"Enter name:";
     cin>>name;
-    // cout<<" choose X or O :";
-    // cin>>id;
-    // do{
-    //    if(id=='X') {cout<<" You will play with X"<<endl;}
-    //    break;
-    //    if(id=='O') {cout<<"You will play with O"<<endl;}
-    //    break;
-    // }
-    // while(id=='X'|| id=='O');
 }
 string Player::getName(){
     return name;
 }
 
 void Player:: ShowInfo(){
-    cout<<name<<" "<<"Win:"<<this->win<<" Loss:"<<this->loss<<" Draw:"<<this->draw<<" Winrate: "<<this->calculateWinrate()<<endl;
+    cout<<name<<endl;
+    cout<<"Win:"<<this->win<<" Loss:"<<this->loss<<" Draw:"<<this->draw<<" Winrate: "<<this->calculateWinrate()<<endl;
 }
 char Player::getId(){
     return id;

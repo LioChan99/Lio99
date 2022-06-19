@@ -1,9 +1,9 @@
 #include"Model.h"
-void Model::addPlayer(shared_ptr<Player> player){
+void Model::addPlayer(shared_ptr<Player> &player){
     //player->insertInfor();
     players.push_back(player);
 };
-shared_ptr<Player> Model::getPlayerByName(string name){
+shared_ptr<Player> Model::getPlayerByName(string &name){
     for(int i=0;i<players.size();i++){
         if(players[i]->getName()==name){
             return players[i];
@@ -35,7 +35,7 @@ shared_ptr<Player> Model::checkExistPlayer(string name){
     }
     FilePlayers.close();
  }
- void Model::findSimilerPlayer(string name){
+ void Model::findSimilerPlayer(string &name){
     int flag;
     float rate;
        for(int i=0;i<players.size();i++){
