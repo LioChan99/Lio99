@@ -1,6 +1,5 @@
 #include"Model.h"
 void Model::addPlayer(shared_ptr<Player> &player){
-    //player->insertInfor();
     players.push_back(player);
 };
 shared_ptr<Player> Model::getPlayerByName(string &name){
@@ -23,7 +22,7 @@ shared_ptr<Player> Model::checkExistPlayer(string name){
          for(int i=0;i<players.size();i++){
             players[i]->ShowInfo();
          }
-       }
+}
 
  void Model::imPortFile(){
     ofstream FilePlayers("File Players.ini");

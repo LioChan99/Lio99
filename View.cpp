@@ -98,9 +98,6 @@ void View::insertXO(int &x,int &y){
 			this->playXO = 'X';
 		}
 	}
-	// else {
-	// 	cout << "Invalid position!"<<endl;
-	// }
 }
 
 

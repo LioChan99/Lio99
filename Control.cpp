@@ -84,6 +84,7 @@ char Control::getCurrentXY(int &x,int &y){
 	return view.chessBoard[x][y];
 }
 void Control:: PlayGame(shared_ptr<Player> &player1,shared_ptr<Player> &player2){
+		system("MODE 84,25");
 		int x_mouse, y_mouse;
 		system("cls");
 		cout<<"                       <XXXXXXXXXX> CARO GAME <XXXXXXXXXX> "<<endl;
@@ -126,29 +127,9 @@ void Control:: PlayGame(shared_ptr<Player> &player1,shared_ptr<Player> &player2)
                         y_mouse = ir[i].Event.MouseEvent.dwMousePosition.Y - 3 ;
 						//view.insertXO(y_mouse,x_mouse);
 					    view.insertXoOnly(y_mouse,x_mouse);
-						//view.drawChessBoard();
-						// view.insertXoOnly(ir[i].Event.MouseEvent.dwMousePosition.X,ir[i].Event.MouseEvent.dwMousePosition.Y);
-						//view.drawChessBoard();
-							// while(1){
-			//  if((GetKeyState(VK_LBUTTON) & 0x8000) != 0) 
-            // {  
-            //     POINT xypos;
-            //     GetCursorPos(&xypos); 
-            //     x = (xypos.x-5)/36;
-            //     y = (xypos.y-77)/19;
-             
-            //     view.insertXO(y,x);
-
-            //    break;
-            // }	
-			// }
-
 			if (CheckWin(y_mouse,x_mouse) == 1) {
 			system("cls");
 			view.drawChessBoard();
-		// 	cout<<"                CARO GAME "<<endl;
-		// cout<<"    "<<player1->getName()<<"<X>"<<"                      "<<player2->getName()<<"<O>"<<endl;
-			 //cout<<"Win"<<endl;
 			if(player1->getId()==getCurrentXY(y_mouse,x_mouse)){
 				cout<<player1->getName() <<" WIN!"<<endl;
 				player1->setWin(player1->getWin()+1);
@@ -162,13 +143,13 @@ void Control:: PlayGame(shared_ptr<Player> &player1,shared_ptr<Player> &player2)
 			model.imPortFile();
 	        view.resetBoard();	
 			return;
-		}
-	}
+	 	    }
+    	}
 
+    }
 }
-		}
-	}
+}
 	
-	}
+}
 
 

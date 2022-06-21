@@ -1,13 +1,14 @@
 #include"Control.h"
 int main(){
+	system("MODE 35, 20");
 	int select;
 	Control control;
 	do{
-		cout<<"======== CARO GAME ========="<<endl;
-		cout<<" 1. New game"<<endl;
-		cout<<" 2. Show players'information"<<endl;
-        cout<<" 3. Find player with same rank"<<endl;
-		cout<<" 4. Exit "<<endl;
+		cout<<"    ======== CARO GAME ========="<<endl;
+		cout<<"  1. New game"<<endl;
+		cout<<"  2. Show players'information"<<endl;
+        cout<<"  3. Find player with same rank"<<endl;
+		cout<<"  4. Exit "<<endl;
         cin>>select;
 		switch(select){
 			case 1:
